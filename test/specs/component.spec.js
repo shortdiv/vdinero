@@ -6,8 +6,8 @@ import SlotOptions from '../utils/slotOptions.vue'
 jest.useFakeTimers()
 
 describe('VDinero basic functionality', () => {
-  let wrapper
   describe('without options', () => {
+    let wrapper
     test('should format a given value as usd by default', () => {
       wrapper = mount(SlotDefault, {
         propsData: {
@@ -34,6 +34,7 @@ describe('VDinero basic functionality', () => {
     })
   })
   describe('with options', () => {
+    let wrapper
     test('should format a value to euro', () => {
       wrapper = mount(SlotOptions, {
         propsData: {
@@ -62,6 +63,7 @@ describe('VDinero basic functionality', () => {
     })
   })
   describe('on user input', () => {
+    let wrapper
     beforeEach(() => {
       wrapper = mount(SlotDefault, {
         propsData: {
