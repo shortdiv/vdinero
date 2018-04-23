@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import Vue from 'vue';
-import Dinero from '../../src/dinerofy';
+import Dinero from '../../src/filters/dinerofy.js';
 
 describe('Filter logic', () => {
   it('should return value in usd as default', () => {

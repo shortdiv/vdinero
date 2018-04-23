@@ -1,9 +1,10 @@
-import { consolidateFormat, format } from './utils.js'
+import { consolidateFormat, format } from '../utils.js'
 
 export default function (val, options) {
   var formatOptions = Object.assign({
     currency: 'usd',
-    format: 'american',
+    delimiter: ',',
+    decimal: '.',
     precision: 2,
     prefix: true,
   }, options)

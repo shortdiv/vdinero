@@ -2,7 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import Dinero from './components/VDinero';
-import Dinerofy from './dinerofy'
+import Dinerofy from './filters/dinerofy'
 
 const VDinero = {
   install (Vue, options) {
