@@ -1,0 +1,51 @@
+{
+  "name": "VDinero",
+  "version": "1.0.0",
+  "description": "A Vue.js project for formatting currency",
+  "author": "Divya Sasidharan <hello@shortdiv.com>",
+  "private": true,
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint --ext .js,.vue src test/specs"
+  },
+  "dependencies": {
+    "vue": "^2.5.16"
+  },
+  "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.13",
+    "babel-jest": "^22.4.3",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.3.2",
+    "babel-preset-stage-2": "^6.24.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.3.2",
+    "eslint-loader": "^1.7.1",
+    "jest": "^22.4.3",
+    "jsdom": "^11.7.0",
+    "jsdom-global": "^3.0.2",
+    "vue-jest": "^2.5.0",
+    "vue-template-compiler": "^2.5.16",
+    "webpack": "^4.6.0"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
+    }
+  },
+  "engines": {
+    "node": ">= 4.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
