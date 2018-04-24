@@ -2,6 +2,7 @@ import { mount } from '@vue/test-utils'
 import Vue from 'vue'
 import SlotDefault from '../utils/slotDefault.vue'
 import SlotOptions from '../utils/slotOptions.vue'
+import SlotWithEvent from '../utils/slotWithEvent.vue'
 
 jest.useFakeTimers()
 
@@ -65,24 +66,20 @@ describe('VDinero basic functionality', () => {
   describe('on user input', () => {
     let wrapper
     beforeEach(() => {
-      wrapper = mount(SlotDefault, {
+      wrapper = mount(SlotWithEvent, {
         propsData: {
-          value: 300
+          value: 300,
         }
       })
     })
     test('initial value should be $300', () => {
       expect(wrapper.text()).toBe('$300')
     })
-    test('on reaching thousands place, it should add a delimiter', async () => {
-      wrapper.setProps({ value: 3000 })
-      await wrapper.vm.$nextTick()
-      wrapper.vm.$nextTick().then(res => {
-        //console.log(res.$options.propsData)
-        //console.log(wrapper.vm._update)
-        //console.log(wrapper.text())
-      })
-      expect(wrapper.vm.value).toBe(3000)
+    test('on reaching thousands place, it should add a delimiter', () => {
+      const input = wrapper.find('input')
+      input.element.value = 3000
+      input.trigger('input')
+      expect(wrapper.text()).toBe('$3,000')
     })
   })
 })

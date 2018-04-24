@@ -16,7 +16,6 @@ function consolidateFormat (options) {
 function format (num, options) {
   if (num.toString().indexOf("e") > -1) { num = truncateLargeNum(num) }
   const truncatedNum = truncateDecimalPlace(num, options.precision).toString()
-  debugger
   const updateDecimalSymb = separateByDecimals(truncatedNum, options.decimal)
   const formattedNum = separateByThousandths(updateDecimalSymb, options.delimiter)
   if (options.prefix) {
@@ -60,7 +59,6 @@ function separateByDecimals(num, decimal) {
 }
 
 function separateByThousandths (str, delimiter) {
-  debugger
   return str.replace(/\B(?=(\d{3})+(?!\d))/g, `${delimiter}`)
 }
 
