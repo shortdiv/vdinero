@@ -64,23 +64,21 @@ function separateByThousandths (str, delimiter) {
 
 function validateChars (evt, decimalSym) {
   var charCode = evt.which !== undefined ? evt.which : evt.keyCode
-  validateNumChar(charCode)
-  validateDecimalChar(charCode, decimalSym)
+  if (isNotValidNumChar(charCode) && isNotValidDecimalChar(charCode, decimalSym)) {
+    return evt.preventDefault()
+  }
 }
 
-function validateNumChar (charCode) {
-  if (charCode < 48 || charCode > 57) {
-    return event.preventDefault();
-  }
+function isNotValidNumChar (charCode) {
+  return charCode < 48 || charCode > 57
 }
 
 function validatePasteData (event) {
   if (Number.isNaN(parseFloat(event.clipboardData.getData('Text')))) { event.preventDefault() }
 }
 
-function validateDecimalChar (charCode, decimal) {
-  if (decimal === ',' && charCode === 46) { event.preventDefault() }
-  if (decimal === '.' && charCode === 44) { event.preventDefault() }
+function isNotValidDecimalChar (charCode, decimal) {
+  return (decimal === ',' && charCode === 46) || (decimal === '.' && charCode === 44)
 }
 
 function limitDecimalPlaces (evt, options) {
