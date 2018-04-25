@@ -1,5 +1,4 @@
 import { mount } from '@vue/test-utils'
-import Vue from 'vue'
 import SlotDefault from '../utils/slotDefault.vue'
 import SlotOptions from '../utils/slotOptions.vue'
 import SlotWithEvent from '../utils/slotWithEvent.vue'
