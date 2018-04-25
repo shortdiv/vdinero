@@ -1,13 +1,35 @@
 const currency = {
   usd: {
-    'currency': '$',
+    'symbol': '$',
+    'code': 'USD',
     'delimiter': ',',
-    'decimal': '.'
+    'decimal': '.',
+    'separator': 1000,
+    'precision': 2
+  },
+  rupee: {
+    'symbol': '₹',
+    'code': 'INR',
+    'delimiter': ',',
+    'decimal': '.',
+    'separator': 100000, // 1,00,000 1,00,00,000
+    'precision': 2
+  },
+  yuan: {
+    'symbol': '¥',
+    'code': 'CNY',
+    'delimiter': ',',
+    'decimal': '.',
+    'separator': 1000,
+    'precision': 2
   },
   euro: {
-    'currency': '€',
+    'symbol': '€',
+    'code': 'EUR',
     'delimiter': '.',
-    'decimal': ','
+    'decimal': ',',
+    'separator': 1000,
+    'precision': 2
   }
 }
 

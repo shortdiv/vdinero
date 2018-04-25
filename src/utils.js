@@ -17,9 +17,17 @@ function format (num, options) {
   if (num.toString().indexOf("e") > -1) { num = truncateLargeNum(num) }
   const truncatedNum = truncateDecimalPlace(num, options.precision).toString()
   const updateDecimalSymb = separateByDecimals(truncatedNum, options.decimal)
-  const formattedNum = separateByThousandths(updateDecimalSymb, options.delimiter)
+  debugger
+  let formattedNum
+  if (options.separator === 100000) {
+    formattedNum = separateByHundredThousandths(updateDecimalSymb, options.delimiter, options.decimal)
+  } else  {
+    formattedNum = separateByThousandths(updateDecimalSymb, options.delimiter)
+  }
   if (options.prefix) {
-    return options.currency + formattedNum
+    return options.symbol + formattedNum
+  } else if (options.suffix) {
+    return formattedNum + options.symbol
   } else {
     return formattedNum
   }
@@ -56,6 +64,19 @@ function findDecimal (str, decimal) {
 
 function separateByDecimals(num, decimal) {
   return num.toString().replace('.', decimal)
+}
+
+function separateByHundredThousandths (str, delimiter, decimal) {
+  var parts = str.split(decimal)
+  var lastThree = parts[0].substring(parts[0].length-3);
+  var otherNumbers = parts[0].substring(0, parts[0].length-3);
+  if(otherNumbers != '')
+      lastThree = delimiter + lastThree;
+  if (parts[1]) {
+    return otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, `${delimiter}`) + lastThree + decimal + parts[1];
+  } else {
+    return otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, `${delimiter}`) + lastThree
+  }
 }
 
 function separateByThousandths (str, delimiter) {

@@ -16,9 +16,9 @@ export default {
     return {
       monies: 30000.987,
       options: {
-        delimiter: '.',
-        decimal: ',',
+        currency: 'rupee',
         prefix: false,
+        suffix: false,
         precision: 2,
       },
       num: null,

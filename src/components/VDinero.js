@@ -38,11 +38,11 @@ export default {
     return this.$scopedSlots.default({
       formattedValue: this.formatted,
       input: (e) => {
+        validateChars(e, this.formatOptions.decimal)
         this.formatted = this.formatNumber(e)
       },
       inputEvents: {
           keypress: (e) => {
-            validateChars(e, this.formatOptions.decimal)
             limitDecimalPlaces(e, this.formatOptions)
           },
           paste: (e) => validatePasteData(e)
