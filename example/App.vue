@@ -6,6 +6,7 @@
         <span>€</span>
       </div>
     </v-dinero>
+    <div>{{ monies | dinerofy(options) }}</div>
     </div>
 </template>
 
@@ -17,8 +18,9 @@ export default {
       monies: 30000.987,
       options: {
         currency: 'rupee',
+        delimiter: '.',
+        decimal: ',',
         prefix: false,
-        suffix: false,
         precision: 2,
       },
       num: null,

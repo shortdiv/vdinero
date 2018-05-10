@@ -66,17 +66,16 @@ function separateByDecimals(num, decimal) {
   return num.toString().replace('.', decimal)
 }
 
-function separateByHundredThousandths (str, delimiter, decimal) {
-  var parts = str.split(decimal)
-  var lastThree = parts[0].substring(parts[0].length-3);
-  var otherNumbers = parts[0].substring(0, parts[0].length-3);
+//Indian //
+function separateByHundredThousandths (str, delimiter, decimalSymb) {
+  const parts = str.split(decimalSymb)
+  const decimal = parts[1] !== 'undefined' ? parts[1] : ''
+  let lastThree = parts[0].substring(parts[0].length-3);
+  let otherNumbers = parts[0].substring(0, parts[0].length-3);
   if(otherNumbers != '')
       lastThree = delimiter + lastThree;
-  if (parts[1]) {
-    return otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, `${delimiter}`) + lastThree + decimal + parts[1];
-  } else {
-    return otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, `${delimiter}`) + lastThree
-  }
+  lastThree += parts[1] ? decimalSymb + parts[1] : ''
+  return otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, `${delimiter}`) + lastThree;
 }
 
 function separateByThousandths (str, delimiter) {

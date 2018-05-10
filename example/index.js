@@ -5,7 +5,6 @@ import VDinero from '../src/main';
 Vue.config.productionTip = false;
 Vue.use(VDinero, {
   currency: 'euro',
-  format: 'international',
   prefix: true,
   precision: 2,
 });
